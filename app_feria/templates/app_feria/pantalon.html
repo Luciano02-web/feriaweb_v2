@@ -1,0 +1,115 @@
+{% extends "app_feria/padre2.html" %}
+
+
+{% block titulo %}
+
+<h1 class="title_object">
+    Pantalones/Shorts
+</h1>
+
+<form action="/app_feria/buscar_panta" method="GET">
+
+    <h5 class="style_filtro">
+        Filtrar
+        <input class="btn btn-secondary col-md-3" style="width:86px;" type="submit" name="genero" id="genero" value="Hombre" readonly>
+        <input class="btn btn-secondary col-md-3" style="width:86px;" type="submit" name="genero" id="genero" value="Mujer" readonly>
+    </h5>      
+    
+</form>
+
+{% if request.user.is_superuser and panta %}
+
+<div>
+    <a class="btn btn-warning col-md-2" href="{% url 'Crear Pantalon' %}">
+        Agregar
+    </a>
+</div>
+
+{% endif %}
+
+{% endblock %}
+
+
+
+{% block descripcion %}
+
+<div class="container text-center" style="padding: 68px; margin-top: -65px;">
+    
+    <div class="row">
+        
+        {% for p in panta %}
+        
+        <div class="col-sm-4 align-items-center">
+            
+            <div class="card-body">
+                
+                <div class="galeria rounded">
+                    
+                    <a class="list-group-item rounded bordercard" href="{% url 'Detalle_pantalon' p.id %}">
+                
+                        {% if p.imagen %}
+    
+                        <img class="styleimg"src="{{p.imagen.url}}">
+    
+                        {% elif p.imagen_b %}
+    
+                        <img class="styleimg" src="{{p.imagen_b.url}}">
+                        
+                        {% else %}
+    
+                        <h3 class="noimg">
+                            Imagen no disponible
+                        </h3>
+    
+                        {% endif %}
+    
+                
+
+                        <h5 class="let_codigo">
+                            Codigo {{p.codigo}}
+                        </h5>
+                        <h4 class="let_precio">
+                            <strong>${{p.precio}}</strong>
+                        </h4>
+
+                
+                    </a>
+
+                </div>
+
+                {% if request.user.is_superuser %}
+                
+                <a class="btn btn-danger col-md-5" href="{% url 'EliminaPantalon' p.codigo %}">
+                    Eliminar
+                </a>
+                <a class="btn btn-secondary col-md-5" href="{% url 'EditarPantalon' p.codigo %}">
+                    Editar
+                </a>
+        
+                {% else %}
+                
+                {% endif %}
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% if request.user.is_superuser %}
+
+<div>
+    <a class="btn btn-warning col-md-2" href="{% url 'Crear Pantalon' %}">
+        Agregar
+    </a>
+</div>
+
+{% endif %}
+
+
+
+{% endblock %}

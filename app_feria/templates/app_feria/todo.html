@@ -1,0 +1,107 @@
+{% extends "app_feria/padre2.html" %}
+
+
+{% block titulo %}
+
+<h1 class="title_object">
+    Todo por $100
+</h1>
+
+{% if request.user.is_superuser and todo %}
+
+<div>
+    <a class="btn btn-warning col-md-2" href="{% url 'Crear todo por 100' %}">
+        Agregar
+    </a>
+</div>
+
+{% endif %}
+
+{% endblock %}
+
+
+
+{% block descripcion %}
+
+<div class="container text-center" style="padding: 68px; margin-top: -65px;">
+
+    <div class="row">
+
+        {% for to in todo %}
+
+        <div class="col-sm-4 align-items-center">
+
+            <div class="card-body">
+
+                <div class="galeria rounded">
+
+                    <a class="list-group-item rounded bordercard" href="{% url 'Detalle_todo100' to.id %}">
+                        
+                        {% if to.imagen %}
+
+                        <img class="styleimg" src="{{to.imagen.url}}">
+
+                        {% elif to.imagen_b %}
+
+                        <img  class="styleimg" src="{{to.imagen_b.url}}">
+
+                        {% else %}
+
+                        <h3 class="noimg">
+                                Imagen no disponible
+                        </h3>
+
+                        {% endif %}
+
+
+
+                        <h5 class="let_codigo">
+                            Codigo {{to.codigo}}
+                        </h5>
+                        <h4 class="let_precio">
+                            <strong>${{to.precio}}</strong>
+                        </h4>
+                
+                        
+                    </a>
+
+                </div>
+
+                {% if request.user.is_superuser %}
+                
+                <a class="btn btn-danger col-md-5" href="{% url 'Elimina todo por 100' to.codigo %}">
+                    Eliminar
+                </a>
+                <a class="btn btn-secondary col-md-5" href="{% url 'Editar todo por 100' to.codigo %}">
+                    Editar
+                </a>
+        
+                {% else %}
+        
+                {% endif %}
+                
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% if request.user.is_superuser %}
+
+<div>
+    <a class="btn btn-warning col-md-2" href="{% url 'Crear todo por 100' %}">
+        Agregar
+    </a>
+</div>
+
+{% else %}
+
+{% endif %}
+
+
+
+{% endblock %}

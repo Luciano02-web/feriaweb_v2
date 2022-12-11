@@ -1,0 +1,10 @@
+div.galeria:hover{
+    transform: rotate(3deg);
+}
+.bordercard{
+    border:outset; 
+    border-width: 3px; 
+    white-space: nowrap; 
+    margin: 0px -20px; 
+    padding: 0px;
+}

@@ -1,0 +1,37 @@
+{% extends "app_feria/padre2.html" %}
+
+
+
+{% block titulo %}
+<h3 style="color:rgb(250, 254, 250) ;
+text-shadow: 1px 2px 2px black, 0 0 25px blue, 0 0 5px blue;
+text-align: center;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size: 50px ;">
+    <p>Edite datos del pantalon o short</p>
+</h3>
+
+{% endblock %}
+
+
+{% block descripcion %}
+
+
+<form action = "" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+            
+    <table align="center" style="color:rgb(250, 254, 250) ;
+    text-shadow: 1px 2px 2px black, 0 0 25px blue, 0 0 5px blue;
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+        <p>
+            <div>
+                {{formulario7.as_table}}
+            </div>
+        </p>
+    </table>
+
+    <br>
+                    
+    <button class="btn btn-secondary"type="submit">Enviar</button>
+{% endblock %}
+
+

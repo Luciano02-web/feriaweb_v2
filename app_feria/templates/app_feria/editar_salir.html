@@ -1,0 +1,23 @@
+{% extends "app_feria/padre.html" %}
+
+
+
+{% block titulo %}
+
+<div class="text-center">
+    <a class="btn btn-secondary col-md-2" href="{% url 'Editar Usuario' %}">
+        Editar Usuario
+    </a>
+
+    <ol>
+
+    </ol>
+
+    <a class="btn btn-danger  col-md-2" href="{% url 'Logout' %}">
+        Cerrar sesión
+    </a>
+    
+    
+</div>
+ 
+{% endblock %}

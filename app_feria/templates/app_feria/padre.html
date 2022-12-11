@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Feria web</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'app_feria/assets/favicon.ico' %}" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        
+        <style>
+
+            @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap');
+
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Source Sans Pro', sans-serif;
+                text-decoration: none;
+            }
+
+            body{
+                background-image: url('https://www.diarioelinforme.com.ar/contenido/noticias/original/1550839520.jpeg');
+                background-size: cover;
+                width: 100%;
+                position: relative;
+            }
+
+            header{
+                width: 100%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                background: #fff;
+            }
+
+            /*BARRA MENU*/
+            .container__menu{
+                width: 100%;
+                height: 70px;
+                background: #023877;
+                padding: 0px 20px;
+            }
+
+            .menu{
+                max-width: 1200px;
+                margin: auto ;
+                height: 100% ;
+                
+            }
+            
+            nav{
+                height: 100%;
+            }
+
+            nav > ul{
+                height: 100%;
+                display:flex ;
+            }
+
+            nav ul li{
+                height: 100%;
+                list-style:none ;
+                position: relative;
+
+            }
+
+            nav > ul >li:first-child > a{
+                background-image: url("https://cdn-icons-png.flaticon.com/512/2099/2099043.png");
+                background-size: 24px;
+                background-repeat: no-repeat;
+                background-position: center center;
+                padding: 20px 40px;
+            }
+
+            nav > ul >li:first-child:hover > a{
+                background-image: url("https://cdn-icons-png.flaticon.com/512/2099/2099043.png");
+                background-size: 24px;
+                background-repeat: no-repeat;
+                background-position: center center;
+            }
+
+            nav > ul > li > a{
+                width:100% ;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                padding: 14px;
+                color: white;
+                text-transform: uppercase;
+                font-size: 14px;
+                transition: all 300ms ease;
+
+            }
+
+            nav > ul > li > a:hover{
+                transform: scale(1.1);
+                background: #0074c7;
+                box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+
+            }
+
+            #selected{
+                transform: scale(1.1);
+                background-color: #0074c7;
+                box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+            }
+
+            /* SUBMENU */
+
+            nav ul li ul{
+                width: 200px;
+                display: flex;
+                flex-direction: column;
+                background: #fff;
+                position:absolute;
+                top: 90px;
+                left: -5px;
+                padding: 14px 0px;
+                visibility: hidden;
+                opacity: 0;
+                box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+                z-index: 10;
+                transition: all 300ms ease;
+            }
+            
+            nav ul li:hover ul{
+                visibility: visible;
+                opacity: 1;
+                top: 70px;
+            }
+
+            nav ul li ul:before{
+                content: '';
+                width: 0;
+                height: 0;
+                border-left: 12px solid transparent;
+                border-right: 12px solid transparent;
+                border-bottom: 12px solid white;
+                position: absolute;
+                top: -12px;
+                left: 20px;
+            }
+
+            nav ul li ul li a{
+                display: block;
+                color: #0099E9;
+                padding: 6px;
+                padding-left: 14px;
+                margin-top: 10px;
+                font-size: 14px;
+                text-transform: uppercase;
+                transition: all 300ms ease;
+            }
+
+            
+            nav ul li ul li a:hover{
+                background: #0074c7;
+                color: #fff;
+                transform: scale(1.1);
+                padding-left: 30px;
+                font-size: 14px;
+                box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+            }
+
+            /*ELEMENTOS RESPONSIVOS*/
+
+            .icon__menu{
+                font-size: 26px;
+                color: white;
+                cursor: pointer;
+                width: 26px;
+                height: 100%;
+                display: none;
+                align-items: center;
+            }
+
+            #label__check{
+                width: 26px;
+                height: 100%;
+                display: none;
+            }
+
+            #check__menu{
+                display: none;
+            }
+
+            @media screen and (max-width: 720px){
+                nav > ul{
+                    flex-direction: column;
+                    background-color: #023877;
+                    position: fixed;
+                    left:0;
+                    top: 58px;
+                    width: 100%;
+                    height: 0px;
+                    transition: all 300ms ease;
+                    z-index: 100;
+                    opacity: 0;
+                    visibility: hidden;
+                }
+
+                nav > ul > li > a:hover{
+                    transform: scale(1);
+                }
+
+                nav ul li ul{
+                    left: 255px;
+                }
+
+                nav > ul > li:hover ul{
+                    top: 115px
+
+                }
+
+                nav ul li ul:before{
+                top: -12px;
+                left: 87px;
+                }
+
+                nav > ul > li:first-child a{
+                    background-position: 20px;
+                }
+                
+                #selected{
+                    transform: scale(1);
+                }
+                #label__check{
+                    display: block;
+                }
+                .icon__menu{
+                    display: flex;
+                }
+                #check__menu:checked ~ nav > ul{
+                    height: 300px;
+                    visibility: visible;
+                    opacity: 1;
+                }
+            }
+
+            .py-5 {
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
+            }
+
+            .bg-dark {
+                --bs-bg-opacity: 1;
+                background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+            }
+
+            .container,
+            .container-fluid,
+            .container-xxl,
+            .container-xl,
+            .container-lg,
+            .container-md,
+            .container-sm {
+                width: 100%;
+                padding-right: var(--bs-gutter-x, 0.75rem);
+                padding-left: var(--bs-gutter-x, 0.75rem);
+                margin-right: auto;
+                margin-left: auto;
+            }
+
+            .navbar > .container,
+            .navbar > .container-fluid,
+            .navbar > .container-sm,
+            .navbar > .container-md,
+            .navbar > .container-lg,
+            .navbar > .container-xl,
+            .navbar > .container-xxl {
+                display: flex;
+                flex-wrap: inherit;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .toast-container {
+                width: -webkit-max-content;
+                width: -moz-max-content;
+                width: max-content;
+                max-width: 100%;
+                pointer-events: none;
+            }
+
+            .toast-container > :not(:last-child) {
+                margin-bottom: 0.75rem;
+            }
+
+            .m-0 {
+                margin: 0 !important;
+            }
+
+
+
+
+
+        </style>
+    </head>
+    <body id="page-top">
+        <header>
+
+            <div class="container__menu">
+
+                <div class="menu">
+                    <input type="checkbox" id="check__menu">
+                    <label id="#label__check" for="check__menu">
+                        <i class="fa-solid fa-bars icon__menu"></i>
+                    </label>
+
+                    <nav>
+                    
+                        <ul>
+                
+                            <li><a href="#" id="selected"></a>
+                                
+                                <ul>
+                                    
+                                    {% if request.user.is_authenticated %}
+                
+                                    <li><a href="{% url 'Editarosalir' %}"><strong>Hola </strong>{{user.username}}</a></li>
+
+                                    {% else %}
+                                    
+                                    <li><a href="{% url 'Iniciar_o_registrar' %}"><strong>Hola</strong>, Inicia tu sesión</a></li>
+                                    
+                                    {% endif %}
+
+                                    <li><a href="{% url 'Leer Remera' %}">Remeras</a></li>
+
+                                    <li><a href="{% url 'Leer Camisas' %}">Camisas</a></li>
+                                    
+                                    <li><a href="{% url 'Leer Campera' %}">Camperas</a></li>
+                                    
+                                    <li><a href="{% url 'Leer Invernal' %}">Ropa de invierno</a></li>
+                                    
+                                    <li><a href="{% url 'Leer Pantalon' %}">Pantalones/shorts</a></li>
+                                    
+                                    <li><a href="{% url 'Leer Jeans' %}">Jeans</a></li>
+                                    
+                                    <li><a href="{% url 'Leer Calzado' %}">Calzados</a></li>
+                                    
+                                    <li><a href="{% url 'Leer todo por 100' %}">Todo por $100</a></li>
+                                </ul>
+
+                            </li>
+                            
+                            <li><a href="{% url 'Inicio' %}">¡¡Feria Americana!!</a></li>
+
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        </header>
+        
+        <!-- Header - set the background image for the header in the line below-->
+        <div class="text-center my-1">
+            <img class="img-fluid rounded-circle mb-4" src="https://cdn.icon-icons.com/icons2/3150/PNG/512/clothing_shop_bag_tshirt_icon_192654.png"
+            style="
+            background-color: rgb(127, 255, 193);
+            width: 230px;
+            height: 250px;
+            position: relative;
+            margin-top: 50px;">
+            
+        
+
+            {% block titulo %}
+
+
+            {% endblock %}
+
+            <p class="text-white-50 mb-0"></p>
+            
+            {% block descripcion %}
+
+
+
+            {% endblock %}
+
+        </div>
+
+        {% block pie %}
+
+
+        {% endblock %}
+        
+        <!-- Footer-->
+        <footer class="py-5 bg-dark" style="margin-top: 90px;">
+            <div class="container">
+                <div class="m-0 text-center text-white ">
+                    <p class="m-0 text-center text-white">Copyright &copy; outlet_ini2 2022</p>
+                </div>
+            </div>
+            <div class="conteiner">
+                <div class="m-0 text-center text-white " >
+                    <br>
+                    <a href="https://www.instagram.com/outlet_ini2/?next=%2F" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" style="
+                        width: 4%;
+                        margin-right: 1%;"> outlet_ini2</a>
+                    
+                </div>
+            </div>
+        
+        </footer>   
+        <!-- Core theme JS-->
+        <script src="{% static 'app_feria/js/scripts.js' %}"></script>
+        
+
+    </body>
+</html>

@@ -1,0 +1,109 @@
+{% extends "app_feria/padre2.html" %}
+
+
+{% block titulo %}
+
+<h1 style="color:rgb(250, 254, 250) ;
+text-shadow: 1px 2px 2px black, 0 0 25px blue, 0 0 5px blue;
+text-align: center;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size: 50px;">
+    Jeans
+</h1>
+
+{% endblock %}
+
+
+{% block descripcion %}
+
+
+<div>
+    <h5 style="color:rgb(250, 254, 250) ;
+    text-shadow: 1px 2px 2px black, 0 0 25px blue, 0 0 5px blue;">
+        <p>Estás buscando jean para {{busqueda}}</p>
+    </h5>
+        
+    <div class="container text-center">
+        <div class="row">
+            {% for jean in jeans %}
+            <div class="col-sm-6 align-items-center">
+                
+                <div class="card-body">
+                        
+                    <a class="list-group-item " style="border-radius:110px;border:outset;border-width: 3px; white-space: nowrap;" href="{% url 'Detalle' jean.id %}">
+                
+                        {% if jean.imagen %}
+
+                        <img class="card-img-top" 
+                        src="{{jean.imagen.url}}"style="
+                        width: 339px;
+                        height: 430px;">
+
+                        {% elif jean.imagen_b %}
+
+                        <img src="{{jean.imagen_b.url}}"style="
+                        width: 339px;
+                        height: 430px;">
+                        
+                        {% else %}
+
+                        <h3 style="color:rgb(250, 254, 250);
+                        text-shadow: 1px 2px 2px black, 0 0 25px rgb(255, 0, 0), 0 0 5px rgb(255, 0, 0);
+                        text-align: center;
+                        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+                            <ol>
+                                Imagen no disponible
+                            </ol>
+                        </h3>
+
+                        {% endif %}
+
+
+
+                            
+                        <h5 style="font-family:'Times New Roman', Times, serif ;">
+                            Codigo {{jean.codigo}}
+                        </h5>
+                        <h4 style="font-family:'Times New Roman', Times, serif ;">
+                            <strong>${{jean.precio}}</strong>
+                        </h4>
+                        
+                                
+                        {% if request.user.is_superuser %}
+            
+                        <a class="btn btn-danger col-md-3" href="{% url 'EliminaJean' jean.codigo %}">
+                            Eliminar Jean
+                        </a>
+                        <a class="btn btn-secondary col-md-3" href="{% url 'EditaJean' jean.codigo %}">
+                            Editar Jean
+                        </a>
+                        
+                        {% endif %}
+                        
+                    </a>
+                    
+                </div>
+                
+            </div>
+            
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% if request.user.is_superuser %}
+<div>
+    <a class="btn btn-secondary col-md-2" href="{% url 'Crear Jeans'  %}">
+        Agregar Jean
+    </a>
+</div>
+{% else %}
+    
+{% endif %}
+
+
+
+
+{% endblock %}

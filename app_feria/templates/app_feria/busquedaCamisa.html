@@ -1,0 +1,34 @@
+{% extends "app_feria/padre1.html" %}
+
+
+
+{% block titulo %}
+
+<h1 style="color:rgb(250, 254, 250) ;
+text-shadow: 1px 2px 2px black, 0 0 25px blue, 0 0 5px blue;
+text-align: center;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size: 50px ;">
+    En esta seccion vamos a buscar camisa
+    <br>
+    para hombre o para mujer
+</h1>
+
+
+<form action="/app_feria/buscar_cami" method="GET">
+    <p>
+        <div>
+
+            <h6 style="color:rgb(250, 254, 250) ;
+                text-shadow: 1px 2px 2px black, 0 0 25px blue, 0 0 5px blue;">
+                Ingrese aqui(Hombre/Mujer)
+            </h6>
+            
+            <input type="text" name="genero" placeholder="Hombre/Mujer" id="genero">
+
+            <input class="btn-primary" type="submit" value="Buscar">
+        </div>
+        
+    </p>
+</form>
+
+{% endblock %}

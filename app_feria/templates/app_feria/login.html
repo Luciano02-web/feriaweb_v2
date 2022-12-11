@@ -1,0 +1,57 @@
+{% extends "app_feria/padre.html" %}
+
+
+{% block titulo %}
+
+{% endblock %}
+
+
+
+{% block descripcion %}
+
+<main class="conteiner">
+                
+        <section class="col-md-4 offset-md-4">
+                
+            <form action=""method="POST" class="card-body">
+
+                            
+                <h1>Inicio de sesión</h1>
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="username">
+                        <strong>
+                            Usuario:
+                        </strong>
+                    </label>
+                    <input type="text" name="username" id="username" class="form-control" placeholder="Usuario">
+                </div>
+
+                <div class="mb-3">
+                    <label for="password">
+                        <strong>
+                            Contraseña:
+                        </strong>
+                    </label>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña">
+                </div>
+
+                <button class="btn btn-secondary">
+                    Ingresar
+                </button>
+                <div style="width:410px;color: black;">
+                    <h6>
+                        <br>
+                        No tienes una cuenta? <a style="color:orange ;" href="{% url 'Registrarse' %}">Registrate</a>
+                    </h6>
+                </div>
+            </form>
+
+            
+        </section>
+
+</main>
+
+{% endblock %}
+
+

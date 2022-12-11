@@ -1,0 +1,148 @@
+{% extends "app_feria/padre2.html" %}
+
+
+{% block titulo %}
+<h1 class="title_detail">
+    <ol>
+        Remera
+    </ol>
+</h1>
+{% endblock %}
+
+
+{% block descripcion %}
+
+<div class="container text-center" >
+    
+    <div class="row">
+        
+        <h6>
+            
+            <h5>
+
+                {% if remera.imagen and remera.imagen_b %}
+                
+                <ol>
+                    <img class="img-thumbnail rounded img_detail" src="{{remera.imagen.url}}">
+
+                    <img class="img-thumbnail rounded img_detail" src="{{remera.imagen_b.url}}">
+                </ol>
+
+                {% elif remera.imagen %}
+
+                <ol>
+                    <img class="img-thumbnail rounded img_detail" src="{{remera.imagen.url}}">
+                </ol>
+
+                {% elif remera.imagen_b %}
+                
+                <ol>
+                    <img class="img-thumbnail rounded img_detail"src="{{remera.imagen_b.url}}">
+                </ol>
+
+                {% else %}
+
+                <h1 class="img_not_allow_detail">
+                    <ol>
+                        Imagen no disponible
+                    </ol>
+                </h1>
+
+                {% endif %}
+            
+            </h5>
+            
+            <h5 class="description_detail">
+                
+                {% if remera.codigo %}
+                <ol>
+                    Código: {{remera.codigo}}
+                </ol>
+                {% endif %}
+                
+                {% if remera.talle %}
+                <ol>
+                    Talle: {{remera.talle}}
+                </ol>
+                {% endif %}
+                
+                {% if remera.color %}
+                <ol>
+                    Color: {{remera.color}}
+                </ol>
+                {% endif %}
+
+                {% if remera.genero %}
+                <ol>
+                    Para {{remera.genero}}
+                </ol>
+                {% endif %}
+
+                {% if remera.genero %}
+                <h2 class="description_precio">
+                    <ol>
+                        <strong>${{remera.precio}}</strong>
+                    </ol>
+                </h2>
+                {% endif %}
+                
+
+
+                {% if request.user.is_authenticated %}
+                
+                <div>
+                    <ol>
+                        <a class="btn btn-primary" href="https://www.instagram.com/outlet_ini2/?next=%2F" target="_blank">
+                            <h4 style="width:160px;height:23px;">
+                                <strong style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                                    Consultar
+                                </strong>
+                            </h4>
+                        </a>
+                    </ol>
+                </div>
+
+
+                {% else %}
+                <div>
+                    <ol>
+                        <a class="btn btn-primary" href="{% url 'Login' %}">
+                            <h4 style="width:160px; height:23px;">
+                                <strong style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                                    Consultar
+                                </strong>
+                            </h4>
+                        </a>
+                    </ol>
+                </div>
+
+                {% endif %}
+
+            </h5>
+            
+                    
+        </h6>
+
+    </div>
+
+    <ol>
+        {% if request.user.is_superuser %}
+
+        <a class="btn btn-danger" href="{% url 'EliminaRemera' remera.codigo %}">
+            Eliminar Remera
+        </a>
+        <a class="btn btn-secondary" href="{% url 'EditarRemera' remera.codigo %}">
+            Editar Remera
+        </a>
+                    
+        {% else %}
+        
+        {% endif %}
+    </ol>
+    
+
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Feria web</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'app_feria/assets/favicon.ico' %}" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'app_feria/css/styles.css' %}" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+
+                {% if request.user.is_authenticated %}
+                
+                <a class="navbar-brand" href="{% url 'Editarosalir' %}"><strong>Hola </strong>{{user.username}}</a>
+                <a class="navbar-brand" href="{% url 'Inicio' %}">¡¡Feria Americana!!</a>
+
+
+
+                {% else %}
+                <a class="navbar-brand" href="{% url 'Iniciar_o_registrar' %}"><strong>Hola</strong>, Inicia tu sesión</a>
+                <a class="navbar-brand" aria-current="page" href="{% url 'Inicio' %}">¡¡Feria Americana!!</a>
+
+                {% endif %}
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Leer Remera' %}"><img src="https://cdn-icons-png.flaticon.com/512/5258/5258010.png" style="
+                            width: 50px;
+                            height: 50px;"></a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Leer Camisas' %}"><img src="https://cdn-icons-png.flaticon.com/512/4722/4722182.png" style="
+                            width: 50px;
+                            height: 50px;"></a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Leer Campera' %}"><img src="https://cdn-icons-png.flaticon.com/512/7394/7394962.png" style="
+                            width: 50px;
+                            height: 50px;"></a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Leer Invernal' %}"><img src="https://cdn-icons-png.flaticon.com/512/3752/3752147.png" style="
+                            width: 50px;
+                            height: 50px;"></a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Leer Pantalon' %}"><img src="https://cdn-icons-png.flaticon.com/512/2793/2793865.png" style="
+                            width: 50px;
+                            height: 50px;"></a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Leer Jeans' %}"><img src="https://cdn-icons-png.flaticon.com/512/2806/2806058.png" style="
+                            width: 50px;
+                            height: 50px;"></a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Leer Calzado' %}"><img src="https://cdn-icons-png.flaticon.com/512/3199/3199876.png" style="
+                            width: 50px;
+                            height: 50px;"></a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Leer todo por 100' %}"><img src="https://cdn-icons-png.flaticon.com/512/5084/5084399.png" style="
+                            width: 50px;
+                            height: 50px;"></a></li>
+                    </ul>
+                    
+                </div>
+            </div>
+        </nav>
+        <!-- Header - set the background image for the header in the line below-->
+        <header class="py-5 bg-image-full" style="background-image: url('https://www.diarioelinforme.com.ar/contenido/noticias/original/1550839520.jpeg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        
+        position: relative;">
+            <div class="text-center my-1">
+                <img class="img-fluid rounded-circle mb-4" src="https://cdn.icon-icons.com/icons2/3150/PNG/512/clothing_shop_bag_tshirt_icon_192654.png"
+                style="
+                background-color: rgb(127, 255, 193);
+                width: 230px;
+                height: 250px;
+                position: relative;">
+                
+            
+
+                {% block titulo %}
+
+
+                {% endblock %}
+
+                <p class="text-white-50 mb-0"></p>
+                
+                {% block descripcion %}
+
+
+
+                {% endblock %}
+
+            </div>
+        </header>
+
+        {% block pie %}
+
+
+        {% endblock %}
+
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container">
+                <div class="m-0 text-center text-white ">
+                    <p class="m-0 text-center text-white">Copyright &copy; outlet_ini2 2022</p>
+                </div>
+            </div>
+            <div class="conteiner">
+                <div class="m-0 text-center text-white " >
+                    <br>
+                    <a href="https://www.instagram.com/outlet_ini2/?next=%2F" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"  style="
+                        width: 4%;
+                        margin-right: 1%;"> outlet_ini2</a>
+                </div>
+            </div>
+        
+        </footer>   
+        <!-- Core theme JS-->
+        <script src="{% static 'app_feria/js/scripts.js' %}"></script>
+    </body>
+</html>

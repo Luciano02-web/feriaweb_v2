@@ -1,0 +1,36 @@
+{% extends "app_feria/padre.html" %}
+
+
+
+{% block titulo %}
+
+<h2 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size: 50px ;">
+    <p>Edite datos del usuario: {{usuario}}</p>
+</h2>
+
+{% endblock %}
+
+
+
+{% block descripcion %}
+
+<form action = "" method="POST"> {% csrf_token %}
+    
+    <table align="center" >
+        <p>
+
+            <div>
+                    
+                {{miForm.as_table}}
+                
+            </div>
+            
+        </p>
+    </table>
+    <br>
+                    
+    <button class="btn btn-secondary"type="submit">Enviar</button>
+                    
+</form> 
+
+{% endblock %}

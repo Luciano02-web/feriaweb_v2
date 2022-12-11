@@ -1,0 +1,103 @@
+{% extends "app_feria/padre2.html" %}
+
+
+{% block titulo %}
+
+<h1 class="title_object">
+    Remeras
+</h1>
+
+{% endblock %}
+
+
+{% block descripcion %}
+
+
+<div>
+
+    <h5 class="buscador">
+        <p>Estás buscando remera para {{busqueda_rem}}</p>
+    </h5>
+
+    <div class="container text-center"style="padding: 68px; margin-top: -65px;">
+
+        <div class="row">
+
+            {% for remera in remeras %}
+
+                <div class="col-sm-4 align-items-center">
+                    
+                    <div class="card-body">
+                        
+                        <div class="galeria rounded">
+
+                            <a class="list-group-item rounded bordercard" href="{% url 'Detalle_remera' remera.id %}">
+                            
+                                {% if remera.imagen %}
+
+                                <img class="styleimg"src="{{remera.imagen.url}}">
+
+                                {% elif remera.imagen_b %}
+
+                                <img class="styleimg"src="{{remera.imagen_b.url}}">
+                                
+                                {% else %}
+
+                                <h3 class="noimg">
+                                    Imagen no disponible
+                                </h3>
+
+                                {% endif %}
+
+
+
+                                <h5 class="let_codigo">
+                                    Codigo {{remera.codigo}}
+                                </h5>
+                                <h4 class="let_precio">
+                                    <strong>${{remera.precio}}</strong>
+                                </h4>
+                                
+                                        
+                                {% if request.user.is_superuser %}
+                    
+                                <a class="btn btn-danger col-md-6 elim_edit" href="{% url 'EliminaRemera' remera.codigo %}">
+                                    Eliminar Remera
+                                </a>
+                                <a class="btn btn-secondary col-md-6 elim_edit" href="{% url 'EditarRemera' remera.codigo %}">
+                                    Editar Remera
+                                </a>
+                                
+                                {% endif %}
+                                
+                            </a>
+
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% if request.user.is_superuser %}
+
+<div>
+    <a class="btn btn-warning col-md-2" href="{% url 'Crear Remera' %}">
+        Agregar Remera
+    </a>
+</div>
+
+{% else %}
+
+{% endif %}
+
+
+
+{% endblock %}
