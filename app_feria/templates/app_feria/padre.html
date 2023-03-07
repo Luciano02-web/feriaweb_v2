@@ -16,287 +16,129 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         
         <style>
-
+            /* GOOGLE FONTS */
             @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap');
 
+            /* CSS RESET */
+
             *{
-                margin: 0;
                 padding: 0;
-                box-sizing: border-box;
-                font-family: 'Source Sans Pro', sans-serif;
+                margin: 0;
                 text-decoration: none;
+                list-style: none;
+                box-sizing: border-box;
             }
 
             body{
-                background-image: url('https://www.diarioelinforme.com.ar/contenido/noticias/original/1550839520.jpeg');
-                background-size: cover;
-                width: 100%;
-                position: relative;
+                font-family: "Montserrat", sans-serif;
             }
 
             header{
                 width: 100%;
-                position: fixed;
-                top: 0;
-                left: 0;
-                background: #fff;
+                height: 100vh;
+                background-image: url('http://vgb.gov.ar/municipalidad/wp-content/uploads/sites/2/2018/05/feria-el-Molino.jpg');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
             }
 
-            /*BARRA MENU*/
-            .container__menu{
-                width: 100%;
-                height: 70px;
-                background: #023877;
-                padding: 0px 20px;
-            }
+            /* NAVIGATION */
 
-            .menu{
-                max-width: 1200px;
-                margin: auto ;
-                height: 100% ;
-                
-            }
-            
             nav{
-                height: 100%;
-            }
-
-            nav > ul{
-                height: 100%;
-                display:flex ;
-            }
-
-            nav ul li{
-                height: 100%;
-                list-style:none ;
-                position: relative;
-
-            }
-
-            nav > ul >li:first-child > a{
-                background-image: url("https://cdn-icons-png.flaticon.com/512/2099/2099043.png");
-                background-size: 24px;
-                background-repeat: no-repeat;
-                background-position: center center;
-                padding: 20px 40px;
-            }
-
-            nav > ul >li:first-child:hover > a{
-                background-image: url("https://cdn-icons-png.flaticon.com/512/2099/2099043.png");
-                background-size: 24px;
-                background-repeat: no-repeat;
-                background-position: center center;
-            }
-
-            nav > ul > li > a{
-                width:100% ;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                padding: 14px;
-                color: white;
-                text-transform: uppercase;
-                font-size: 14px;
-                transition: all 300ms ease;
-
-            }
-
-            nav > ul > li > a:hover{
-                transform: scale(1.1);
-                background: #0074c7;
-                box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-
-            }
-
-            #selected{
-                transform: scale(1.1);
-                background-color: #0074c7;
-                box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-            }
-
-            /* SUBMENU */
-
-            nav ul li ul{
-                width: 200px;
-                display: flex;
-                flex-direction: column;
-                background: #fff;
-                position:absolute;
-                top: 90px;
-                left: -5px;
-                padding: 14px 0px;
-                visibility: hidden;
-                opacity: 0;
-                box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-                z-index: 10;
-                transition: all 300ms ease;
-            }
-            
-            nav ul li:hover ul{
-                visibility: visible;
-                opacity: 1;
-                top: 70px;
-            }
-
-            nav ul li ul:before{
-                content: '';
-                width: 0;
-                height: 0;
-                border-left: 12px solid transparent;
-                border-right: 12px solid transparent;
-                border-bottom: 12px solid white;
-                position: absolute;
-                top: -12px;
-                left: 20px;
-            }
-
-            nav ul li ul li a{
-                display: block;
-                color: #0099E9;
-                padding: 6px;
-                padding-left: 14px;
-                margin-top: 10px;
-                font-size: 14px;
-                text-transform: uppercase;
-                transition: all 300ms ease;
-            }
-
-            
-            nav ul li ul li a:hover{
-                background: #0074c7;
-                color: #fff;
-                transform: scale(1.1);
-                padding-left: 30px;
-                font-size: 14px;
-                box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-            }
-
-            /*ELEMENTOS RESPONSIVOS*/
-
-            .icon__menu{
-                font-size: 26px;
-                color: white;
-                cursor: pointer;
-                width: 26px;
-                height: 100%;
-                display: none;
-                align-items: center;
-            }
-
-            #label__check{
-                width: 26px;
-                height: 100%;
-                display: none;
-            }
-
-            #check__menu{
-                display: none;
-            }
-
-            @media screen and (max-width: 720px){
-                nav > ul{
-                    flex-direction: column;
-                    background-color: #023877;
-                    position: fixed;
-                    left:0;
-                    top: 58px;
-                    width: 100%;
-                    height: 0px;
-                    transition: all 300ms ease;
-                    z-index: 100;
-                    opacity: 0;
-                    visibility: hidden;
-                }
-
-                nav > ul > li > a:hover{
-                    transform: scale(1);
-                }
-
-                nav ul li ul{
-                    left: 255px;
-                }
-
-                nav > ul > li:hover ul{
-                    top: 115px
-
-                }
-
-                nav ul li ul:before{
-                top: -12px;
-                left: 87px;
-                }
-
-                nav > ul > li:first-child a{
-                    background-position: 20px;
-                }
-                
-                #selected{
-                    transform: scale(1);
-                }
-                #label__check{
-                    display: block;
-                }
-                .icon__menu{
-                    display: flex;
-                }
-                #check__menu:checked ~ nav > ul{
-                    height: 300px;
-                    visibility: visible;
-                    opacity: 1;
-                }
-            }
-
-            .py-5 {
-                padding-top: 3rem !important;
-                padding-bottom: 3rem !important;
-            }
-
-            .bg-dark {
-                --bs-bg-opacity: 1;
-                background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
-            }
-
-            .container,
-            .container-fluid,
-            .container-xxl,
-            .container-xl,
-            .container-lg,
-            .container-md,
-            .container-sm {
+                height: 100px;
                 width: 100%;
-                padding-right: var(--bs-gutter-x, 0.75rem);
-                padding-left: var(--bs-gutter-x, 0.75rem);
-                margin-right: auto;
-                margin-left: auto;
-            }
-
-            .navbar > .container,
-            .navbar > .container-fluid,
-            .navbar > .container-sm,
-            .navbar > .container-md,
-            .navbar > .container-lg,
-            .navbar > .container-xl,
-            .navbar > .container-xxl {
                 display: flex;
-                flex-wrap: inherit;
-                align-items: center;
                 justify-content: space-between;
+                align-items: center;
             }
 
-            .toast-container {
-                width: -webkit-max-content;
-                width: -moz-max-content;
-                width: max-content;
-                max-width: 100%;
-                pointer-events: none;
+            .saludo{
+                width: 180px;
+                margin-left: 30px;
             }
 
-            .toast-container > :not(:last-child) {
-                margin-bottom: 0.75rem;
+            .bar-btn{
+                font-size:20px;
+                color: #fff;
+                margin-right: 20px;
+                cursor: pointer;
             }
 
-            .m-0 {
-                margin: 0 !important;
+            .nav-menu{
+                position: fixed;
+                width: 100%;
+                height: 0vh;
+                top: 100px;
+                background: rgba(0, 0, 0, .95);
+                text-align: center;
+                transition:all .5s;
+            }
+
+            .nav-menu li{
+                display:none;
+                line-height: 30px;
+                margin: 50px 0;
+                transition:all .5s ;
+            }
+
+            .nav-menu li a{
+                color: #fff;
+                font-size: 16px;
+                text-transform:uppercase;
+                font-weight: 600;
+            }
+
+            .nav-menu li a.active, .nav-menu li a:hover{
+                color: rgb(248, 8, 8);
+                transition: .3s;
+            }
+            
+            #check{
+                display: none;
+            }
+
+            #check:checked ~ .nav-menu{
+                height: 100vh;
+            }
+
+            #check:checked ~ .nav-menu li{
+                display: block;
+            }
+
+            @media screen and (min-width: 768px){
+                .saludo{
+                    margin-left: 50px;
+                }
+
+                nav{
+                    height: 100px;
+                }
+
+                .bar-btn{
+                    display: none;
+                }
+
+                .nav-menu{
+                    position: relative;
+                    height: 100px;
+                    top: 0;
+                    background: none;
+                    transition: none;
+                    text-align: right;
+                    margin-right: 50px;
+                }
+
+                .nav-menu li{
+                    display: inline-block;
+                    line-height: 100px;
+                    margin: 0 20px;
+                    transition:none;
+                }
+
+                .nav-menu li a{
+                    font-size: 12px;
+                }
+
             }
 
 
@@ -305,72 +147,73 @@
 
         </style>
     </head>
-    <body id="page-top">
+    <body>
         <header>
+            <nav>
 
-            <div class="container__menu">
+                <li><a class="saludo" href="{% url 'Inicio' %}">¡¡Feria Americana!!</a></li>
 
-                <div class="menu">
-                    <input type="checkbox" id="check__menu">
-                    <label id="#label__check" for="check__menu">
-                        <i class="fa-solid fa-bars icon__menu"></i>
-                    </label>
+                <input type="checkbox" id="check">
+                <label for="check" class="bar-btn">
+                    <i class="fa-solid fa-bars icon__menu"></i>
+                </label>
 
-                    <nav>
+                <ul class="nav-menu">
+
+                    {% if request.user.is_authenticated %}
+                
+                    <li><a class="active" href="{% url 'Editarosalir' %}"><strong>Hola </strong>{{user.username}}</a></li>
+
+                    {% else %}
                     
-                        <ul>
-                
-                            <li><a href="#" id="selected"></a>
-                                
-                                <ul>
-                                    
-                                    {% if request.user.is_authenticated %}
-                
-                                    <li><a href="{% url 'Editarosalir' %}"><strong>Hola </strong>{{user.username}}</a></li>
+                    <li><a class="active" href="{% url 'Iniciar_o_registrar' %}"><strong>Hola</strong>, Inicia tu sesión</a></li>
+                    
+                    {% endif %}
 
-                                    {% else %}
-                                    
-                                    <li><a href="{% url 'Iniciar_o_registrar' %}"><strong>Hola</strong>, Inicia tu sesión</a></li>
-                                    
-                                    {% endif %}
+                    
+                    <li><a href="{% url 'Leer Remera' %}"></a><img src="https://cdn-icons-png.flaticon.com/512/5258/5258010.png" style="
+                    width: 50px;
+                    height: 50px;"></a></li>
 
-                                    <li><a href="{% url 'Leer Remera' %}">Remeras</a></li>
+                    <li><a href="{% url 'Leer Camisas' %}"></a><img src="https://cdn-icons-png.flaticon.com/512/4722/4722182.png" style="
+                    width: 50px;
+                    height: 50px;"></a></li>
+                    
+                    <li><a href="{% url 'Leer Campera' %}"></a><img src="https://cdn-icons-png.flaticon.com/512/7394/7394962.png" style="
+                    width: 50px;
+                    height: 50px;"></a></li>
+                    
+                    <li><a href="{% url 'Leer Invernal' %}"></a><img src="https://cdn-icons-png.flaticon.com/512/3752/3752147.png" style="
+                    width: 50px;
+                    height: 50px;"></a></li>
+                    
+                    <li><a href="{% url 'Leer Pantalon' %}"></a><img src="https://cdn-icons-png.flaticon.com/512/2793/2793865.png" style="
+                    width: 50px;
+                    height: 50px;"></a></li>
+                    
+                    <li><a href="{% url 'Leer Jeans' %}"></a><img src="https://cdn-icons-png.flaticon.com/512/2806/2806058.png" style="
+                    width: 50px;
+                    height: 50px;"></a></li>
+                    
+                    <li><a href="{% url 'Leer Calzado' %}"></a><img src="https://cdn-icons-png.flaticon.com/512/3199/3199876.png" style="
+                    width: 50px;
+                    height: 50px;"></a></li>
+                    
+                    <li><a href="{% url 'Leer todo por 100' %}">Todo por $100</a><img src="https://cdn-icons-png.flaticon.com/512/5084/5084399.png" style="
+                    width: 50px;
+                    height: 50px;"></a></li>
+                </ul>
 
-                                    <li><a href="{% url 'Leer Camisas' %}">Camisas</a></li>
-                                    
-                                    <li><a href="{% url 'Leer Campera' %}">Camperas</a></li>
-                                    
-                                    <li><a href="{% url 'Leer Invernal' %}">Ropa de invierno</a></li>
-                                    
-                                    <li><a href="{% url 'Leer Pantalon' %}">Pantalones/shorts</a></li>
-                                    
-                                    <li><a href="{% url 'Leer Jeans' %}">Jeans</a></li>
-                                    
-                                    <li><a href="{% url 'Leer Calzado' %}">Calzados</a></li>
-                                    
-                                    <li><a href="{% url 'Leer todo por 100' %}">Todo por $100</a></li>
-                                </ul>
+            </nav>
 
-                            </li>
-                            
-                            <li><a href="{% url 'Inicio' %}">¡¡Feria Americana!!</a></li>
 
-                        </ul>
-                    </nav>
-                </div>
-
-            </div>
         </header>
         
         <!-- Header - set the background image for the header in the line below-->
         <div class="text-center my-1">
-            <img class="img-fluid rounded-circle mb-4" src="https://cdn.icon-icons.com/icons2/3150/PNG/512/clothing_shop_bag_tshirt_icon_192654.png"
+            <img class="img-fluid rounded-circle mb-4"
             style="
-            background-color: rgb(127, 255, 193);
-            width: 230px;
-            height: 250px;
-            position: relative;
-            margin-top: 50px;">
+            height: 250px;">
             
         
 

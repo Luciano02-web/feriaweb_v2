@@ -1192,4 +1192,15 @@ def registro_inicio(request):
 
 
 
+
+padre linea 313
+
+
+<img class="img-fluid rounded-circle mb-4" src="https://cdn.icon-icons.com/icons2/3150/PNG/512/clothing_shop_bag_tshirt_icon_192654.png"
+            style="
+            background-color: rgb(127, 255, 193);
+            width: 230px;
+            height: 250px;
+            position: relative;
+            margin-top: 50px;">
 """
