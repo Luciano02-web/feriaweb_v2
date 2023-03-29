@@ -3,9 +3,7 @@
 
 {% block titulo %}
 <h1 class="title_detail">
-    <ol>
-        Remera
-    </ol>
+    Remera
 </h1>
 {% endblock %}
 
@@ -21,68 +19,83 @@
             <h5>
 
                 {% if remera.imagen and remera.imagen_b %}
-                
-                <ol>
-                    <img class="img-thumbnail rounded img_detail" src="{{remera.imagen.url}}">
+                <br>
+                <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    </div>
+                    <div class="carousel-inner">
+                      <div class="carousel-item active" data-bs-interval="10000">
+                        <img class="img-thumbnail rounded img_detail" src="{{remera.imagen.url}}">
+                        <div class="carousel-caption d-none d-md-block">
+                        </div>
+                      </div>
+                      <div class="carousel-item" data-bs-interval="10000">
+                        <img class="img-thumbnail rounded img_detail"src="{{remera.imagen_b.url}}">
+                        <div class="carousel-caption d-none d-md-block">
+                        </div>
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Siguiente</span>
+                    </button>
+                  </div>
 
-                    <img class="img-thumbnail rounded img_detail" src="{{remera.imagen_b.url}}">
-                </ol>
 
                 {% elif remera.imagen %}
-
-                <ol>
-                    <img class="img-thumbnail rounded img_detail" src="{{remera.imagen.url}}">
-                </ol>
+                <br>
+                <img class="img-thumbnail rounded img_detail" src="{{remera.imagen.url}}">
 
                 {% elif remera.imagen_b %}
-                
-                <ol>
-                    <img class="img-thumbnail rounded img_detail"src="{{remera.imagen_b.url}}">
-                </ol>
+                <br>
+                <img class="img-thumbnail rounded img_detail"src="{{remera.imagen_b.url}}">
 
                 {% else %}
-
+                <br>
                 <h1 class="img_not_allow_detail">
-                    <ol>
                         Imagen no disponible
-                    </ol>
                 </h1>
 
                 {% endif %}
-            
+
             </h5>
             
             <h5 class="description_detail">
                 
                 {% if remera.codigo %}
-                <ol>
+                <br>
                     Código: {{remera.codigo}}
-                </ol>
+                <br>
                 {% endif %}
-                
+
                 {% if remera.talle %}
-                <ol>
+                <br>
                     Talle: {{remera.talle}}
-                </ol>
+                <br>
                 {% endif %}
-                
+
                 {% if remera.color %}
-                <ol>
+                <br>
                     Color: {{remera.color}}
-                </ol>
+                <br>
                 {% endif %}
 
                 {% if remera.genero %}
-                <ol>
+                <br>
                     Para {{remera.genero}}
-                </ol>
+                <br>
                 {% endif %}
 
                 {% if remera.genero %}
+                <br>
                 <h2 class="description_precio">
-                    <ol>
-                        <strong>${{remera.precio}}</strong>
-                    </ol>
+                    <strong>${{remera.precio}}</strong>
                 </h2>
                 {% endif %}
                 
@@ -91,29 +104,25 @@
                 {% if request.user.is_authenticated %}
                 
                 <div>
-                    <ol>
-                        <a class="btn btn-primary" href="https://www.instagram.com/outlet_ini2/?next=%2F" target="_blank">
-                            <h4 style="width:160px;height:23px;">
-                                <strong style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
-                                    Consultar
-                                </strong>
-                            </h4>
-                        </a>
-                    </ol>
+                    <a class="btn btn-primary" href="https://www.instagram.com/outlet_ini2/?next=%2F" target="_blank">
+                        <h4 style="width:160px;height:23px;">
+                            <strong style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                                Consultar
+                            </strong>
+                        </h4>
+                    </a>
                 </div>
 
 
                 {% else %}
                 <div>
-                    <ol>
-                        <a class="btn btn-primary" href="{% url 'Login' %}">
-                            <h4 style="width:160px; height:23px;">
-                                <strong style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
-                                    Consultar
-                                </strong>
-                            </h4>
-                        </a>
-                    </ol>
+                    <a class="btn btn-primary" href="{% url 'Login' %}">
+                        <h4 style="width:160px; height:23px;">
+                            <strong style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                                Consultar
+                            </strong>
+                        </h4>
+                    </a>
                 </div>
 
                 {% endif %}
@@ -123,22 +132,23 @@
                     
         </h6>
 
+
+        
     </div>
 
-    <ol>
-        {% if request.user.is_superuser %}
+    {% if request.user.is_superuser %}
 
-        <a class="btn btn-danger" href="{% url 'EliminaRemera' remera.codigo %}">
-            Eliminar Remera
-        </a>
-        <a class="btn btn-secondary" href="{% url 'EditarRemera' remera.codigo %}">
-            Editar Remera
-        </a>
+    <br>
+    <a class="btn btn-danger" href="{% url 'EliminaRemera' remera.codigo %}">
+        Eliminar Remera
+    </a>
+    <a class="btn btn-secondary" href="{% url 'EditarRemera' remera.codigo %}">
+        Editar Remera
+    </a>
                     
-        {% else %}
+    {% else %}
         
-        {% endif %}
-    </ol>
+    {% endif %}
     
 
 </div>

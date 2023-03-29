@@ -79,10 +79,10 @@
 
                 {% if request.user.is_superuser %}
                         
-                <a class="btn btn-danger col-md-5" href="{% url 'EliminaRemera' pe.codigo %}">
+                <a class="btn btn-danger" href="{% url 'EliminaRemera' pe.codigo %}">
                     Eliminar Remera
                 </a>
-                <a class="btn btn-secondary col-md-5" href="{% url 'EditarRemera' pe.codigo %}">
+                <a class="btn btn-secondary" href="{% url 'EditarRemera' pe.codigo %}">
                     Editar Remera
                 </a>
                 

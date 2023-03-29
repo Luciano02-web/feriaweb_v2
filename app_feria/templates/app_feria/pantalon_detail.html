@@ -2,13 +2,8 @@
 
 
 {% block titulo %}
-<h1 style="color:rgb(250, 254, 250) ;
-text-shadow: 1px 2px 2px black, 0 0 25px blue, 0 0 5px blue;
-text-align: center;
-font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size: 50px;">
-    <ol>
-        Pantalon
-    </ol>
+<h1 class="title_detail">
+    Pantalon
 </h1>
 {% endblock %}
 
@@ -17,134 +12,120 @@ font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size
 
 <div class="container text-center">
     <div class="row">
-        
+
         <h6>
             
             <h5>
 
                 {% if pantalon.imagen and pantalon.imagen_b %}
-                
-                <ol>
-                    <img src="{{pantalon.imagen.url}}"style="
-                    width: 530px;
-                    height: 600px;
-                    border-style:solid ;
-                    border-width: 3px;
-                    border-color:black ;">
-                    <img src="{{pantalon.imagen_b.url}}"style="
-                    width: 530px;
-                    height: 600px;
-                    border-style:solid ;
-                    border-width: 3px;
-                    border-color:black ;">
-                </ol>
+                <br>
+                <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    </div>
+                    <div class="carousel-inner">
+                      <div class="carousel-item active" data-bs-interval="10000">
+                        <img class="img-thumbnail rounded img_detail" src="{{pantalon.imagen.url}}">
+                        <div class="carousel-caption d-none d-md-block">
+                        </div>
+                      </div>
+                      <div class="carousel-item" data-bs-interval="10000">
+                        <img class="img-thumbnail rounded img_detail"src="{{pantalon.imagen_b.url}}">
+                        <div class="carousel-caption d-none d-md-block">
+                        </div>
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Siguiente</span>
+                    </button>
+                  </div>
+
 
                 {% elif pantalon.imagen %}
-                
-                <ol>
-                    <img src="{{pantalon.imagen.url}}"style="
-                    width: 530px;
-                    height: 600px;
-                    border-style:solid ;
-                    border-width: 3px;
-                    border-color:black ;">
-                </ol>
+                <br>
+                <img class="img-thumbnail rounded img_detail" src="{{pantalon.imagen.url}}">
 
                 {% elif pantalon.imagen_b %}
-                
-                <ol>
-                    <img src="{{pantalon.imagen_b.url}}"style="
-                    width: 530px;
-                    height: 600px;
-                    border-style:solid ;
-                    border-width: 3px;
-                    border-color:black ;">
-                </ol>
+                <br>
+                <img class="img-thumbnail rounded img_detail"src="{{pantalon.imagen_b.url}}">
 
                 {% else %}
-
-                <h1 style="color:rgb(250, 254, 250) ;
-                text-shadow: 1px 2px 2px black, 0 0 25px rgb(255, 0, 0), 0 0 5px rgb(255, 0, 0);
-                text-align: center;
-                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size: 50px;">
-                    <ol>
+                <br>
+                <h1 class="img_not_allow_detail">
                         Imagen no disponible
-                    </ol>
                 </h1>
 
                 {% endif %}
-            
+
             </h5>
-                     
-            <h5 style="color:rgb(252, 252, 252) ;
-            text-shadow: 1px 2px 2px rgb(0, 0, 0), 0 0 25px rgb(255, 0, 0), 0 0 5px rgb(255, 0, 0);
-            text-align: center;
-            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+            
+            <h5 class="description_detail">
                 
                 {% if pantalon.codigo %}
-                <ol>
+                <br>
                     Código: {{pantalon.codigo}}
-                </ol>
+                <br>
                 {% endif %}
-                
+
                 {% if pantalon.talle %}
-                <ol>
+                <br>
                     Talle: {{pantalon.talle}}
-                </ol>
+                <br>
                 {% endif %}
-                
+
                 {% if pantalon.color %}
-                <ol>
+                <br>
                     Color: {{pantalon.color}}
-                </ol>
+                <br>
                 {% endif %}
 
                 {% if pantalon.genero %}
-                <ol>
+                <br>
                     Para {{pantalon.genero}}
-                </ol>
+                <br>
                 {% endif %}
 
                 {% if pantalon.genero %}
-                <h2 style="color:rgb(252, 252, 252) ;
-                text-shadow: 1px 2px 2px rgb(0, 0, 0), 0 0 25px rgb(255, 0, 0), 0 0 5px rgb(255, 0, 0);
-                text-align: center;
-                font-family:'Times New Roman', Times, serif ;">
-                    <ol>
-                        <strong>${{pantalon.precio}}</strong>
-                    </ol>
+                <br>
+                <h2 class="description_precio">
+                    <strong>${{pantalon.precio}}</strong>
                 </h2>
                 {% endif %}
+                
+
 
                 {% if request.user.is_authenticated %}
                 
                 <div>
-                    <ol>
-                        <a class="btn btn-primary col-md-2" href="https://www.instagram.com/outlet_ini2/?next=%2F" target="_blank">
-                            <h4 style="width:160px;height:23px;">
-                                <strong style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
-                                    Consultar
-                                </strong>
-                            </h4>
-                        </a>
-                    </ol>
+                    <a class="btn btn-primary" href="https://www.instagram.com/outlet_ini2/?next=%2F" target="_blank">
+                        <h4 style="width:160px;height:23px;">
+                            <strong style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                                Consultar
+                            </strong>
+                        </h4>
+                    </a>
                 </div>
 
 
                 {% else %}
                 <div>
-                    <ol>
-                        <a class="btn btn-primary col-md-2" href="{% url 'Login' %}">
-                            <h4 style="width:160px;height:23px;">
-                                <strong style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
-                                    Consultar
-                                </strong>
-                            </h4>
-                        </a>
-                    </ol>
+                    <a class="btn btn-primary" href="{% url 'Login' %}">
+                        <h4 style="width:160px; height:23px;">
+                            <strong style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                                Consultar
+                            </strong>
+                        </h4>
+                    </a>
                 </div>
 
                 {% endif %}
+
             </h5>
             
                     
@@ -152,20 +133,19 @@ font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size
 
     </div>
 
-    <ol>
-        {% if request.user.is_superuser %}
+    {% if request.user.is_superuser %}
 
-        <a class="btn btn-danger col-md-2" href="{% url 'EliminaPantalon' pantalon.codigo %}">
-            Eliminar
-        </a>
-        <a class="btn btn-secondary col-md-2" href="{% url 'EditarPantalon' pantalon.codigo %}">
-            Editar
-        </a>
-        {% else %}
-        
-        {% endif %}
-    </ol>
+    <br>
+    <a class="btn btn-danger col-md-2" href="{% url 'EliminaPantalon' pantalon.codigo %}">
+        Eliminar
+    </a>
+    <a class="btn btn-secondary col-md-2" href="{% url 'EditarPantalon' pantalon.codigo %}">
+        Editar
+    </a>
     
+    {% else %}
+    
+    {% endif %}    
 
 </div>
 

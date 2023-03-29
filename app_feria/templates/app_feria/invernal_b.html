@@ -3,10 +3,7 @@
 
 {% block titulo %}
 
-<h1 style="color:rgb(250, 254, 250) ;
-text-shadow: 1px 2px 2px black, 0 0 25px blue, 0 0 5px blue;
-text-align: center;
-font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size: 50px;">
+<h1 class="title_object">
     Ropa de invierno
 </h1>
 
@@ -16,84 +13,84 @@ font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size
 {% block descripcion %}
 
 
+
 <div>
-    <h5 style="color:rgb(250, 254, 250) ;
-    text-shadow: 1px 2px 2px black, 0 0 25px blue, 0 0 5px blue;">
+
+    <h5 class="buscador">
         <p>Estás buscando ropa de invierno para {{busqueda_inve}}</p>
     </h5>
 
-    <div class="container text-center">
+    <div class="container text-center"style="padding: 68px; margin-top: -65px;">
+
         <div class="row">
+
             {% for inver in invernales %}
-            <div class="col-sm-6 align-items-center">
 
-                <div class="card-body">
-                    <a class="list-group-item" style="border-radius:110px;border:outset;border-width: 3px; white-space: nowrap;" href="{% url 'Detalle_invernal' inver.id %}">
+                <div class="col-sm-4 align-items-center">
+                    
+                    <div class="card-body">
                         
-                        {% if inver.imagen %}
+                        <div class="galeria rounded">
 
-                        <img class="card-img-top" 
-                        src="{{inver.imagen.url}}"style="
-                        width: 339px;
-                        height: 430px;">
-
-                        {% elif inver.imagen_b %}
-
-                        <img src="{{inver.imagen_b.url}}"style="
-                        width: 339px;
-                        height: 430px;">
-                        
-                        {% else %}
-
-                        <h3 style="color:rgb(250, 254, 250);
-                        text-shadow: 1px 2px 2px black, 0 0 25px rgb(255, 0, 0), 0 0 5px rgb(255, 0, 0);
-                        text-align: center;
-                        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
-                            <ol>
-                                Imagen no disponible
-                            </ol>
-                        </h3>
-
-                        {% endif %}
-
+                            <a class="list-group-item rounded bordercard" href="{% url 'Detalle_invernal' inver.id %}">
                             
-                        <h5 style="font-family:'Times New Roman', Times, serif ;">
-                            Codigo {{inver.codigo}}
-                        </h5>
-                        <h4 style="font-family:'Times New Roman', Times, serif ;">
-                            <strong>${{inver.precio}}</strong>
-                        </h4>
-                
-                
+                                {% if inver.imagen %}
+
+                                <img class="styleimg"src="{{inver.imagen.url}}">
+
+                                {% elif inver.imagen_b %}
+
+                                <img class="styleimg"src="{{inver.imagen_b.url}}">
+                                
+                                {% else %}
+
+                                <h3 class="noimg">
+                                    Imagen no disponible
+                                </h3>
+
+                                {% endif %}
+
+
+
+                                <h5 class="let_codigo">
+                                    Codigo {{inver.codigo}}
+                                </h5>
+                                <h4 class="let_precio">
+                                    <strong>${{inver.precio}}</strong>
+                                </h4>
+                                
+                            </a>
+
+                        </div>
+
                         {% if request.user.is_superuser %}
-                
-                        <a class="btn btn-danger col-md-2" href="{% url 'EliminaInvernal' inver.codigo %}">
+                    
+                        <a class="btn btn-danger col-md-5" href="{% url 'EliminaInvernal' inver.codigo %}">
                             Eliminar
                         </a>
-                        <a class="btn btn-secondary col-md-2" href="{% url 'EditarInvernal' inver.codigo %}">
+                        <a class="btn btn-secondary col-md-5" href="{% url 'EditarInvernal' inver.codigo %}">
                             Editar
                         </a>
                         
-                        
-                
-                        {% else %}
-                            
                         {% endif %}
-                
-                    </a>
+                        
+                    </div>
+                    
                 </div>
-                
-            </div>
+
             {% endfor %}
+
         </div>
+
     </div>
 
 </div>
 
+
 {% if request.user.is_superuser %}
 
 <div>
-    <a class="btn btn-secondary col-md-2" href="{% url 'Crear Invernal' %}">
+    <a class="btn btn-warning col-md-2" href="{% url 'Crear Invernal' %}">
         Agregar
     </a>
 </div>

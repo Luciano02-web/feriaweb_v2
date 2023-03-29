@@ -58,21 +58,20 @@
                                     <strong>${{remera.precio}}</strong>
                                 </h4>
                                 
-                                        
-                                {% if request.user.is_superuser %}
-                    
-                                <a class="btn btn-danger col-md-6 elim_edit" href="{% url 'EliminaRemera' remera.codigo %}">
-                                    Eliminar Remera
-                                </a>
-                                <a class="btn btn-secondary col-md-6 elim_edit" href="{% url 'EditarRemera' remera.codigo %}">
-                                    Editar Remera
-                                </a>
-                                
-                                {% endif %}
-                                
                             </a>
 
                         </div>
+
+                        {% if request.user.is_superuser %}
+                    
+                        <a class="btn btn-danger" href="{% url 'EliminaRemera' remera.codigo %}">
+                            Eliminar Remera
+                        </a>
+                        <a class="btn btn-secondary" href="{% url 'EditarRemera' remera.codigo %}">
+                            Editar Remera
+                        </a>
+                        
+                        {% endif %}
                         
                     </div>
                     
@@ -85,6 +84,7 @@
     </div>
 
 </div>
+
 
 {% if request.user.is_superuser %}
 

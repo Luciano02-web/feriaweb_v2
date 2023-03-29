@@ -6,11 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Feria web</title>
+        <title>Feria virtual</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{% static 'app_feria/assets/favicon.ico' %}" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'app_feria/css/styles.css' %}" rel="stylesheet" />
+        <link href="{% static 'app_feria/css/galeria.css' %}" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -32,33 +35,16 @@
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    
+
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        
-                        <li class="nav-item"><a class="nav-link" href="{% url 'Leer Remera' %}"><img src="https://cdn-icons-png.flaticon.com/512/5258/5258010.png" style="
-                            width: 50px;
-                            height: 50px;"></a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'Leer Camisas' %}"><img src="https://cdn-icons-png.flaticon.com/512/4722/4722182.png" style="
-                            width: 50px;
-                            height: 50px;"></a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'Leer Campera' %}"><img src="https://cdn-icons-png.flaticon.com/512/7394/7394962.png" style="
-                            width: 50px;
-                            height: 50px;"></a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'Leer Invernal' %}"><img src="https://cdn-icons-png.flaticon.com/512/3752/3752147.png" style="
-                            width: 50px;
-                            height: 50px;"></a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'Leer Pantalon' %}"><img src="https://cdn-icons-png.flaticon.com/512/2793/2793865.png" style="
-                            width: 50px;
-                            height: 50px;"></a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'Leer Jeans' %}"><img src="https://cdn-icons-png.flaticon.com/512/2806/2806058.png" style="
-                            width: 50px;
-                            height: 50px;"></a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'Leer Calzado' %}"><img src="https://cdn-icons-png.flaticon.com/512/3199/3199876.png" style="
-                            width: 50px;
-                            height: 50px;"></a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'Leer todo por 100' %}"><img src="https://cdn-icons-png.flaticon.com/512/5084/5084399.png" style="
-                            width: 50px;
-                            height: 50px;"></a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Leer Remera' %}">Remeras</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Leer Camisas' %}">Camisas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Leer Campera' %}">Camperas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Leer Invernal' %}">Invernal</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Leer Pantalon' %}">Pantalones</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Leer Jeans' %}">Jeans</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Leer Calzado' %}">Calzados</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Leer todo por 100' %}">Todo por $100</a></li>
                     </ul>
                     
                 </div>
@@ -98,5 +84,7 @@
         
         <!-- Core theme JS-->
         <script src="{% static 'app_feria/js/scripts.js' %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
     </body>
 </html>
